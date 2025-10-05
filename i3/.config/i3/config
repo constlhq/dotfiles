@@ -11,17 +11,22 @@
 
 for_window [class="^.*"] border pixel 1
 
-set $mod Mod4
-# set $mod Mod1
+# set $mod Mod4
+ set $mod Mod1
 
 exec --no-startup-id picom
-exec --no-startup-id feh --bg-scale ~/backgrounds/nice-blue-background.png
+exec --no-startup-id feh --bg-scale ~/.config/backgrounds/nice-blue-background.png
 exec --no-startup-id xrdb -merge ~/.Xresources
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 
 # kill any hanging polybar processes
 exec_always killall polybar
 exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
+
+
+exec --no-startup-id export QT_QPA_PLATFORMTHEME=gtk2
+exec --no-startup-id export QT_STYLE_OVERRIDE=gtk2
+exec --no-startup-id export QT_AUTO_SCREEN_SCALE_FACTOR=0
 
 bindsym Print exec maim "/home/$USER/Pictures/$(date).jpg"
 bindsym $mod+Print exec maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date).jpg"
@@ -192,6 +197,12 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+
+# bar {
+        # status_command i3status
+        # position top
+        # font pango:JetBrainsMono NF 14
+# }
 
 set $rosewater #f5e0dc
 set $flamingo  #f2cdcd
